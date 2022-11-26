@@ -1,0 +1,187 @@
+:root {
+  --buttcolor: #1b91ff;
+  --backcolor: black;
+}
+
+* {
+  box-sizing: border-box
+}
+
+/* Set height of body and the document to 100% */
+body,html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial;
+  user-select: none;
+}
+
+img {
+  pointer-events: none;
+}
+
+.power {
+  border: none;
+  background-color: black;
+  height: 40px;
+  width: 40px;
+}
+
+.power:hover {
+  background-color: #555;
+}
+
+.power:active {
+  background-color: var(--buttcolor);
+}
+
+.confbuttons {
+  font-size: 120%;
+  color: #ffffff;
+  border: none;
+  background-color: #555;
+}
+
+.confbuttons:hover {
+  background-color: #777;
+}
+
+.confbuttons:active {
+  background-color: var(--buttcolor);
+}
+
+#app {
+  color: white;
+  background-color: #555;
+  border: none;
+  height: 80px;
+  width: 120px;
+}
+
+#app:active {
+  background-color: var(--buttcolor);
+}
+
+button:hover {
+  background-color: #777;
+}
+
+#app:hover {
+  background-color: #777;
+}
+
+/* Style tab links */
+.tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 20%;
+}
+
+.tablink:hover {
+  background-color: #777;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 100px 20px;
+  height: 100%;
+}
+
+.toggle {
+  --width: 50px;
+  --height: calc(var(--width) / 2);
+  --border-radius: calc(var(--height) / 2);
+
+  display: inline-block;
+  cursor: pointer;
+}
+
+.toggle__input {
+  display: none;
+}
+
+.toggle__fill {
+  position: relative;
+  width: var(--width);
+  height: var(--height);
+  border-radius: var(--border-radius);
+  background: #dddddd;
+  transition: background 0.2s;
+}
+
+.toggle__input:checked~.toggle__fill {
+  background: #00aeff;
+}
+
+.toggle__fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: var(--height);
+  width: var(--height);
+  background: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  border-radius: var(--border-radius);
+  transition: transform 0.2s;
+}
+
+input[type="color"] {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  height: 40px;
+  padding: 0;
+  width: 40px;
+}
+
+.power_btns {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+.toggle__input:checked~.toggle__fill::after {
+  transform: translateX(var(--height));
+}
+
+iframe {
+  overflow: hidden;
+  border: 0;
+}
+
+.tabcontent {
+  background-color: var(--backcolor);
+}
+
+.time {
+  position: fixed;
+  bottom: 10px;
+  right: 50px;
+}
+#playerapp {
+  display : none;
+  position: absolute;
+  z-index: 9;
+  background-color: #f1f1f1;
+  text-align: center;
+  border: 1px solid #d3d3d3;
+}
+
+#playerappheader {
+  padding: 10px;
+  cursor: move;
+  z-index: 10;
+  background-color: #2196F3;
+  color: #fff;
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+  <link href="style.css" rel="stylesheet">
+  <script type="text/javascript" src="main.js"></script>
+</head>
+
+<body>
+  <button class="tablink" onclick="openPage('Home', this)" id="defaultOpen"><img src="assets/infopc.svg"><br />About
+    this PC</button>
+  <button class="tablink" onclick="openPage('apps', this)"><img src="assets/apps.svg"><br />Apps</button>
+  <button class="tablink" onclick="openPage('settings', this)"><img src="assets/settings.svg"><br />Settings</button>
+  <button class="tablink" onclick="openPage('terminal', this)"><img src="assets/terminal.svg"><br />Terminal</button>
+  <button class="tablink" onclick="openPage('help', this)"><img src="assets/help.svg"><br />Help</button>
+  <div id="Home" class="tabcontent">
+    <br />
+    <img src="assets/iot.svg" style="float: left; margin-right: 40px;">
+    <h3>About this PC</h3>
+    <p>Host name: <span id="host_name"></span></p>
+    <p>User name: <span id="user_name"></span></p>
+    <p>IP Adress: <span id="ip_ad"></span></p>
+    <p>Total RAM: <span id="memory"></span> MB</p>
+    <p>Free RAM: <span id="memory_free"></span> MB</p>
+    <p>Used RAM: <span id="memory_used"></span> MB</p>
+    <p id="microsoft" hidden>Microsoft, don't touch me</p>
+    <div class="power_btns">
+      <button class="power" onclick="shutdown()"><img src="assets/shutdown.svg"></button>
+      <br />
+      <button class="power" onclick="reboot()"><img src="assets/restart.svg"></button>
+      <br />
+      <button class="power" onclick="hibernation()"><img src="assets/sleepmode.svg"></button>
+    </div>
+    <div class="time">
+      <span id="time"></span>
+      <br />
+      <span id="date"></span>
+    </div>
+  </div>
+  <div id="apps" class="tabcontent">
+
+    <br />
+    <button id="app" class="applink" onclick="openApp('playerapp', this)"><img src="assets/infopc.svg"><br />About</button>
+  </br>
+    <button id="app" onclick="start_web()"><img src="assets/web.svg"><br />Web browser</button> <br />
+    <br /> <button onclick="start_filemanager()" id="app"><img src="assets/file_manager.svg"><br />Files</button>
+  </div>
+  <div id="terminal" class="tabcontent">
+    <iframe src="http://localhost:8000" width="100%" height="430px"></iframe>
+    <h3>Terminal help</h3>
+    <p>To run an application in this X11 session, enter DISPLAY=:0 application_name, for example "DISPLAY=:0 thunar".
+    </p>
+  </div>
+  <div id="help" class="tabcontent">
+    <div id="contenthelp"></div>
+
+  </div>
+  <div id="settings" class="tabcontent">
+    <h3>Settings</h3>
+    <h4>Button color:</h4>
+    <input type="color" id="setting_Color" value="#9900cc">
+    <br /><br />
+    <button class="confbuttons" onclick="save_setting()">Save</button>
+  </div>
+  <script type="text/javascript" src="funcs.js"></script>
+  <script>
+    init_host();
+    settings_init()
+    let timerId = setInterval(memory_free, 500);
+//Make the DIV element draggagle:
+
+
+  </script>
+
+<div id="playerapp">
+  <div id="playerappheader">Click here to move</div>
+  <p>Move</p>
+  <p>this</p>
+  <p>DIV</p>
+</div>
+<script>
+  //Make the DIV element draggagle:
+dragElement(document.getElementById("playerapp"));
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    /* if present, the header is where you move the DIV from:*/
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    /* otherwise, move the DIV from anywhere inside the DIV:*/
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    /* stop moving when mouse button is released:*/
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+</script>
+</body>
+
+</html>

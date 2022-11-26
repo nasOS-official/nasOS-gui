@@ -1,0 +1,24 @@
+{
+  "name": "interfaceiot",
+  "version": "0.0.1",
+  "description": "gui for nasOS IoT",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [
+    "GUI"
+  ],
+  "author": "nasOS",
+  "license": "GPL-3.0-or-later",
+  "devDependencies": {
+    "electron": "^21.2.1",
+    "marked": "^4.2.1"
+  },
+  "dependencies": {
+    "@electron/get": "^2.0.2",
+    "got": "^12.5.2",
+    "ip": "^1.1.8",
+    "node-pty": "^0.9.0"
+  }
+}

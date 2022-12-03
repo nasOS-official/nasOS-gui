@@ -1,8 +1,5 @@
 {
-    "code": [
-        "<h1>Welcome to nasOS!<h1/>",
-        "<p>Thank you for choosing us! Good jobs</p>"
-    ],
+    "code": "./nasosapps/weldata/weldata.js",
     "name":"Welcome",
     "version": 1.0
 }

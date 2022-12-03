@@ -20,11 +20,6 @@ function openPage(pageName, elmnt) {
   elmnt.style.backgroundColor = style.getPropertyValue('--buttcolor');
 }
 
-function openApp(pageName, elmnt) {
-  let i, tabcontent, tablinks;
-  document.getElementById(pageName).style.display = "block";
-
-}
 
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
@@ -92,8 +87,10 @@ function addapp() {
   });
   let whap = 0
   while (whap <= targetFiles.length - 1) {
+    let app = require(`./nasosapps/${targetFiles[whap]}`)
     console.log(targetFiles[whap]);
-    console.log(require(`./nasosapps/${targetFiles[whap]}`));
+    console.log(app);
+    require(app.code);
     whap++;
   }
 }

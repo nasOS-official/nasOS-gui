@@ -3,6 +3,8 @@ let rmsb = document.querySelector(':root');
 let timeclock = document.getElementById("time");
 let dateclock = document.getElementById("date");
 let mem_free;
+let randomIndex;
+const egg = ["microsoft", "microsoft1", "microsoft2"];
 //=========================================Init====================================================
 let style = getComputedStyle(document.body);
 rmsb.style.setProperty('--buttcolor', settings_file.color_btn);
@@ -34,14 +36,15 @@ function memory_free() {
 window.addEventListener('keydown', function (e) {
   switch (e.key) {
     case "Meta":
-      document.getElementById("microsoft").hidden = false;
+      globalThis.randomIndextrue = Math.floor(Math.random() * (egg.length));
+      document.getElementById(egg[randomIndextrue]).hidden = false;
       break;
   }
 }, false);
 window.addEventListener('keyup', function (e) {
   switch (e.key) {
     case "Meta":
-      document.getElementById("microsoft").hidden = true;
+      document.getElementById(egg[randomIndextrue]).hidden = true;
       break;
   }
 }, false);

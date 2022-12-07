@@ -7,7 +7,6 @@ const os = require('os')
 const path = require('path');
 const { executionAsyncResource } = require('async_hooks');
 const { syncBuiltinESMExports } = require("module");
-const { stringify } = require("querystring");
 const user = os.userInfo().username;
 const host = os.hostname();
 let ipad = ip.address();

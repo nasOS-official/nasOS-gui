@@ -1,8 +1,8 @@
 let apps = document.getElementById("apps");
 let frame = document.getElementById("windowapps");
-let app = `<div id="welcomeapp">
+let app = `<div id="calcapp">
   <style>
-  #welcomeapp {
+  #calcapp {
       padding: 10px;
       position: absolute;
       z-index: 9;
@@ -11,7 +11,7 @@ let app = `<div id="welcomeapp">
       /*border: 1px solid #d3d3d3;*/
     }
     
-    #welcomeappheader {
+    #calcappheader {
       transform: translate(-10px, -10px);
       width: calc(100% + 20px);
       padding: 10px;
@@ -21,19 +21,20 @@ let app = `<div id="welcomeapp">
       color: #fff;
     }
   </style>
-  <div id="welcomeappheader">Welcome!</div>
+  <div id="calcappheader">Calculator</div>
   <h2>Welcome to nasOS!</h1>
-  Thank you for choosing us! Good jobs
-  <button onclick="closewelcomeapptrue()">Close</button>
+  ....... что то ещё тут будет
+  <button onclick="closecalcapptrue()">Close</button>
 </div>`
-function welcomeapploader(){
+function calcapploader(){
   frame.innerHTML = `${frame.innerHTML} ${app} `;
   require("./funcs.js");
 }
-function closewelcomeapp(){
-  document.getElementById("welcomeapp").remove();
+function closecalcapp(){
+  document.getElementById("calcapp").remove();
   delete require.cache[require.resolve('./funcs.js')];
 }
-globalThis.closewelcomeapptrue = closewelcomeapp;
-globalThis.welcomeapploadertrue = welcomeapploader;
-apps.innerHTML = `${apps.innerHTML} <br/><br/><button id="app" class="applink" onclick="welcomeapploadertrue()"><img src="assets/infopc.svg"><br/>Welcome</button>`
+
+globalThis.closecalcapptrue = closecalcapp;
+globalThis.calcapploadertrue = calcapploader;
+apps.innerHTML = `${apps.innerHTML} <br/><br/><button id="app" class="applink" onclick="calcapploadertrue()"><img src="assets/infopc.svg"><br/>Calculator</button>`

@@ -3,6 +3,7 @@ let rmsb = document.querySelector(':root');
 let timeclock = document.getElementById("time");
 let dateclock = document.getElementById("date");
 let mem_free;
+let winlist = [];
 let randomIndex;
 const egg = ["microsoft", "microsoft1", "microsoft2"];
 //=========================================Init====================================================
@@ -80,6 +81,69 @@ function time() {
 setInterval(time, 1000);
 time();
 
+const windAPI = {
+  createRunButton: (startapp, text, img)  => {
+  let applink = document.createElement("button");
+  applink.id = "app";
+  applink.className = "applink"
+  applink.innerHTML = `<img src="${img}"><br/>${text}`;
+  let apps = document.getElementById("apps");
+  apps.appendChild(document.createElement("br"));
+  apps.appendChild(document.createElement("br"));
+  apps.appendChild(applink);
+  applink.onclick = startapp;
+  },
+  createWindow: (text, content) => {
+    let contents = document.createElement("div");
+    let windows = document.createElement("div");
+    let windowheader = document.createElement("div");
+    let frame = document.getElementById("windowapps");
+    let closebtn = document.createElement("button");
+    closebtn.id = "super_puper_loler_cool_do_not_use_this_closebtn";
+    closebtn.innerText = "X";
+    closebtn.onclick = () => {windows.remove();
+    let _frame = document.getElementById("windowapps");
+    console.log(_frame.childNodes);};
+    contents.innerHTML = content;
+    windows.id = "windowapp";
+    windowheader.id = "windowappheader";
+    windowheader.innerText = text;
+    windowheader.appendChild(closebtn);
+    windows.appendChild(windowheader);
+    windows.appendChild(contents);
+    frame.appendChild(windows);
+    windows.style.top = "50%";
+    windows.style.left = "50%";
+    windows.style.transform = "translate(-50%, -50%)";
+    let windowchoiser = () =>{
+      frame.childNodes.forEach((element) => {
+        element.style.zIndex = 6;
+        element.querySelector("#windowappheader").style.backgroundColor = "#3d3d3d";
+      });
+      windowheader.style.backgroundColor = "var(--buttcolor)";
+      windows.style.zIndex = 400;
+    }
+
+
+    windows.onmousedown = () => {
+      windowchoiser();
+    }
+    windowheader.onmousedown = function() {
+      document.onmousemove = (moveEvent) => {
+        windows.style.left = (windows.offsetLeft + moveEvent.movementX) + "px";
+        windows.style.top = (windows.offsetTop + moveEvent.movementY) + "px";
+       }
+    }
+    windowheader.onmouseup = () => {
+      document.onmousemove = null;
+    }
+    winlist.push(windows);
+    console.log(winlist);
+    console.log(frame.childNodes)
+    windowchoiser();
+    return windows;
+  }
+}; 
 function addapp() {
 
   let testdirlol = fs.readdirSync("nasosapps");
@@ -93,7 +157,10 @@ function addapp() {
     let app = require(`./nasosapps/${targetFiles[whap]}`)
     console.log(targetFiles[whap]);
     console.log(app);
-    require(app.code);
+    let appcode = require(app.code);
+    if (appcode.init){
+      appcode.init(windAPI);
+    }
     whap++;
   }
 }

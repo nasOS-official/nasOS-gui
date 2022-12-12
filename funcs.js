@@ -17,10 +17,10 @@ function openPage(pageName, elmnt) {
   }
   tablinks = document.getElementsByClassName("tablink");
   for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].style.backgroundColor = "";
+    tablinks[i].classList.remove('applistactive');
   }
   document.getElementById(pageName).style.display = "block";
-  elmnt.style.backgroundColor = style.getPropertyValue('--buttcolor');
+  elmnt.classList.add('applistactive');
 }
 
 

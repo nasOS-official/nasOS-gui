@@ -209,3 +209,5 @@ background-color: #ff2a2a;
 #super_puper_loler_cool_do_not_use_this_closebtn:active{
   background-color: #db3b3b;
 }
+.applistactive{background-color: var(--buttcolor);}
+.applistactive:hover{ background-color: var(--buttcolor);}

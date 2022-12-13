@@ -55,10 +55,44 @@ function start(){
 
 
   let myWindow = API.createWindow("Calculator", app);
+  myWindow.style.height = "280px";
+  myWindow.style.width = "220px";
   // let btnClose = myWindow.querySelector("button[id=close]");
   // btnClose.onclick = ()=>{myWindow.remove();};
+  input = myWindow.querySelector("input");
+  
+btn = myWindow.querySelector(".calcapp").querySelectorAll("button");
+btn.forEach(element => {
+  if(/[0-9\-\+\*\,\%\(\)]/.test(element.innerText)){
+  element.onclick = () => {calcwrite(element.innerText);};
+  }
+  else if(/x²/.test(element.innerText)){
+    element.onclick = () => {calcwrite("²");};
+  }
+  else if(/[\=]/.test(element.innerText)){
+    element.onclick = () => {calculatorcalc()};
+  }
+  else if(/⌫/.test(element.innerText)){
+    element.onclick = () => {deletesymb()};
+  }
+  
+});
   function removesymbols(str){
     return str.replace(/[A-Za-z]/g, '');  
+  }
+  function deletesymb(){
+    input.value = input.value.slice(0, input.value.length - 1);
+  }
+  function calcwrite(symb){
+    input.value = input.value + symb.toString();
+  }
+  function calculatorcalc(){
+    try{
+    input.value = eval(removesymbols(input.value.replace("²", "**")))
+    }
+    catch{
+      input.value = "Incorrect formula"
+    }
   }
 }
 

@@ -1,14 +1,37 @@
 <input id="result">
 <br/>
-<div>
-<!-- <style>
-button {
-  background-color : red;
+<div class="calcapp">
+<style>
+.calcapp button {
+  color: white;
+  background-color : #505050;
+  width: 40px;
+  height: 40px;
+  border: 1px solid white;
 }
-</style>  -->
-<button>⌫</button><button>(</button><button>)</button><button>mod</button><br/>
-<button>7</button><button>8</button><button>9</button><button>÷</button><br/>
-<button>4</button><button>5</button><button>6</button><button>*</button><br/>
-<button>1</button><button>2</button><button>3</button><button>-</button><br/>
-<button>0</button><button>,</button><button>%</button><button>+</button><button>=</button><br/>
+.calcapp button:hover {
+  background-color : #3f3f3f;
+}
+.calcapp button:active {
+  background-color : #2c2c2c;
+}
+.calcapp .calccalcresult {
+  height: 80px;
+  position: relative;
+  top: -20px;
+}
+.bottomcalcline{
+  position: relative;
+  top: -38px;
+} 
+.bottomcalclinetwo{
+  position: relative;
+  left: -20px;
+}
+</style>
+<button>⌫</button><button>(</button><button>)</button><button>mod</button><button>π</button><br/>
+<button class="7">7</button><button>8</button><button>9</button><button>÷</button><button>√</button><br/>
+<button>4</button><button>5</button><button>6</button><button>*</button><button>x<i>²</i></button><br/>
+<div class="bottomcalclinetwo"><button>1</button><button>2</button><button>3</button><button>-</button></div><br/>
+<div class="bottomcalcline"><button>0</button><button>,</button><button>%</button><button>+</button><button class="calccalcresult">=</button></div><br/>
 </div>

@@ -99,16 +99,25 @@ const windAPI = {
     let windowheader = document.createElement("div");
     let frame = document.getElementById("windowapps");
     let closebtn = document.createElement("button");
+    let hidebtn = document.createElement("button");
+    let taskbar = document.getElementById("taskbar");
+    let windowbutton = document.createElement("button");
+    windowbutton.id = "taskbutton";
+    windowbutton.innerText = text;
     closebtn.id = "super_puper_loler_cool_do_not_use_this_closebtn";
     closebtn.innerText = "X";
-    closebtn.onclick = () => {windows.remove();
-    let _frame = document.getElementById("windowapps");
-    console.log(_frame.childNodes);};
+    hidebtn.id = "super_puper_loler_cool_do_not_use_this_hidebtn";
+    hidebtn.innerText = "-";
+    hidebtn.onclick = () => {windows.style.display = 'none'};
+    windowbutton.onclick = () => {windows.style.display = "block"};
+    closebtn.onclick = () => {windows.remove();};
     contents.innerHTML = content;
     windows.id = "windowapp";
     windowheader.id = "windowappheader";
     windowheader.innerText = text;
+    taskbar.appendChild(windowbutton);
     windowheader.appendChild(closebtn);
+    windowheader.appendChild(hidebtn);
     windows.appendChild(windowheader);
     windows.appendChild(contents);
     frame.appendChild(windows);
@@ -138,8 +147,6 @@ const windAPI = {
       document.onmousemove = null;
     }
     winlist.push(windows);
-    console.log(winlist);
-    console.log(frame.childNodes)
     windowchoiser();
     return windows;
   }

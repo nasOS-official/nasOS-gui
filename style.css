@@ -15,8 +15,21 @@ body,html {
   font-family: Arial;
   user-select: none;
   overflow: hidden;
-}
+  animation-duration: 1s;
+  animation-name: slidein;
 
+}
+@keyframes slidein {
+  from {
+    margin-left: -100%;
+    width: 100%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
 img {
   pointer-events: none;
 }
@@ -167,10 +180,11 @@ iframe {
 }
 
 .time {
-  position: fixed;
-  bottom: 10px;
+  color: #fff;
+  position: absolute;
+  top: 3px;
   right: 50px;
-}
+} 
 #windowapp{
   padding: 10px;
   position: absolute;
@@ -208,6 +222,50 @@ background-color: #ff2a2a;
 }  
 #super_puper_loler_cool_do_not_use_this_closebtn:active{
   background-color: #db3b3b;
+}
+#super_puper_loler_cool_do_not_use_this_hidebtn{
+  width: 20px;
+  height: 100%;
+  top: 0;
+  position: absolute ;
+  right: 40px;
+  background-color: #00a2ff;
+  color: #ffffff;
+  border: none;
+}
+#super_puper_loler_cool_do_not_use_this_hidebtn:hover{
+  background-color: var(--buttcolor);
+  }  
+  #super_puper_loler_cool_do_not_use_this_hidebtn:active{
+    background-color: #005d92;
+  }
+#taskbar{
+  background-color: rgb(37, 37, 37);
+   position: fixed;
+  bottom: 0%;
+  right: 0; 
+  width: 100%;
+  height: 40px;
+
+  animation-duration: 0.5s;
+  animation-name: taskslidein;
+
+}
+@keyframes taskslidein {
+  from {
+    bottom: -100%;
+  }
+
+  to {
+    bottom: 0%;
+  }
+}
+#taskbutton{
+  height: 100%;
+ 
+  background-color: var(--buttcolor);
+  color: #ffffff;
+  border: none;
 }
 .applistactive{background-color: var(--buttcolor);}
 .applistactive:hover{ background-color: var(--buttcolor);}

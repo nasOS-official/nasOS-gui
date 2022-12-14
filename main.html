@@ -35,11 +35,7 @@
       <br />
       <button class="power" onclick="hibernation()"><img src="assets/sleepmode.svg"></button>
     </div>
-    <div class="time">
-      <span id="time"></span>
-      <br />
-      <span id="date"></span>
-    </div>
+
   </div>
   <div id="apps" class="tabcontent">
 
@@ -59,12 +55,19 @@
   </div>
   <div id="settings" class="tabcontent">
     <h3>Settings</h3>
-    <h4>Button color:</h4>
-    <input type="color" id="setting_Color" value="#9900cc">
+    <h4>Color:</h4>
+    <input type="color" id="setting_Color">
     <br /><br />
     <button class="confbuttons" onclick="save_setting()">Save</button>
   </div>
   <div id="windowapps"></div>
+  <div id="taskbar">
+    <div class="time">
+      <span id="time"></span>
+      <br />
+      <span id="date"></span>
+    </div>
+  </div>
   <script type="text/javascript" src="funcs.js"></script>
   <script>
     init_host();

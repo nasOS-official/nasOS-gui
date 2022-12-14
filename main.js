@@ -14,10 +14,11 @@ const memory = parseInt(os.totalmem() / 1024 / 1024);
 const createWindow = () => {
   const win = new BrowserWindow({
     kiosk: true,
+    icon: __dirname + '/assets/iot.png',
     webPreferences: {
       nodeIntegration: true,
       enableremotemodule: true,
-      contextIsolation: false
+      contextIsolation: false,
     }
   })
   win.loadFile('main.html');

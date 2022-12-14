@@ -3,7 +3,6 @@ let rmsb = document.querySelector(':root');
 let timeclock = document.getElementById("time");
 let dateclock = document.getElementById("date");
 let mem_free;
-let winlist = [];
 let randomIndex;
 const egg = ["microsoft", "microsoft1", "microsoft2"];
 //=========================================Init====================================================
@@ -108,19 +107,24 @@ const windAPI = {
     closebtn.innerText = "X";
     hidebtn.id = "super_puper_loler_cool_do_not_use_this_hidebtn";
     hidebtn.innerText = "-";
-    hidebtn.onclick = () => {windows.style.display = 'none'};
-    windowbutton.onclick = () => {
+  
+    function taskhide(){
     if(windows.style.display == 'none'){
       windows.style.display = "";
+      windowchoiser();
+      windowbutton.innerText = text;
     }
     else if((windows.style.display == "") && (windowheader.style.backgroundColor == "var(--buttcolor)")){
        windows.style.display = 'none';
+       windowbutton.innerText = `[${text}]`;
     }
     else if((windows.style.display == "") && (windowheader.style.backgroundColor == "rgb(61, 61, 61)")){
       windowchoiser();
     }
     };
-    closebtn.onclick = () => {windows.remove();};
+    hidebtn.onclick = () => {taskhide(); };
+    windowbutton.onclick = () => {taskhide(); };
+    closebtn.onclick = () => {windows.remove(); windowbutton.remove();};
     contents.innerHTML = content;
     windows.id = "windowapp";
     windowheader.id = "windowappheader";
@@ -156,7 +160,6 @@ const windAPI = {
     windowheader.onmouseup = () => {
       document.onmousemove = null;
     }
-    winlist.push(windows);
     windowchoiser();
     return windows;
   }

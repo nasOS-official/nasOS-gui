@@ -157,7 +157,7 @@ const windAPI = {
         windows.style.top = (windows.offsetTop + moveEvent.movementY) + "px";
        }
     }
-    windowheader.onmouseup = () => {
+    document.onmouseup = () => {
       document.onmousemove = null;
     }
     windowchoiser();

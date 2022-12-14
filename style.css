@@ -266,6 +266,7 @@ background-color: #ff2a2a;
   background-color: var(--buttcolor);
   color: #ffffff;
   border: none;
+  border-left: 1px solid  rgb(37, 37, 37);
 }
 .applistactive{background-color: var(--buttcolor);}
 .applistactive:hover{ background-color: var(--buttcolor);}

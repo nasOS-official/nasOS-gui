@@ -109,7 +109,17 @@ const windAPI = {
     hidebtn.id = "super_puper_loler_cool_do_not_use_this_hidebtn";
     hidebtn.innerText = "-";
     hidebtn.onclick = () => {windows.style.display = 'none'};
-    windowbutton.onclick = () => {windows.style.display = "block"};
+    windowbutton.onclick = () => {
+    if(windows.style.display == 'none'){
+      windows.style.display = "";
+    }
+    else if((windows.style.display == "") && (windowheader.style.backgroundColor == "var(--buttcolor)")){
+       windows.style.display = 'none';
+    }
+    else if((windows.style.display == "") && (windowheader.style.backgroundColor == "rgb(61, 61, 61)")){
+      windowchoiser();
+    }
+    };
     closebtn.onclick = () => {windows.remove();};
     contents.innerHTML = content;
     windows.id = "windowapp";

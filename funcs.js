@@ -81,16 +81,16 @@ setInterval(time, 1000);
 time();
 
 const windAPI = {
-  createRunButton: (startapp, text, img)  => {
-  let applink = document.createElement("button");
-  applink.id = "app";
-  applink.className = "applink"
-  applink.innerHTML = `<img src="${img}"><br/>${text}`;
-  let apps = document.getElementById("apps");
-  apps.appendChild(document.createElement("br"));
-  apps.appendChild(document.createElement("br"));
-  apps.appendChild(applink);
-  applink.onclick = startapp;
+  createRunButton: (startapp, text, img) => {
+    let applink = document.createElement("button");
+    applink.id = "app";
+    applink.className = "applink"
+    applink.innerHTML = `<img src="${img}"><br/>${text}`;
+    let apps = document.getElementById("apps");
+    apps.appendChild(document.createElement("br"));
+    apps.appendChild(document.createElement("br"));
+    apps.appendChild(applink);
+    applink.onclick = startapp;
   },
   createWindow: (text, content) => {
     let contents = document.createElement("div");
@@ -107,24 +107,24 @@ const windAPI = {
     closebtn.innerText = "X";
     hidebtn.id = "super_puper_loler_cool_do_not_use_this_hidebtn";
     hidebtn.innerText = "-";
-  
-    function taskhide(){
-    if(windows.style.display == 'none'){
-      windows.style.display = "";
-      windowchoiser();
-      windowbutton.innerText = text;
-    }
-    else if((windows.style.display == "") && (windowheader.style.backgroundColor == "var(--buttcolor)")){
-       windows.style.display = 'none';
-       windowbutton.innerText = `[${text}]`;
-    }
-    else if((windows.style.display == "") && (windowheader.style.backgroundColor == "rgb(61, 61, 61)")){
-      windowchoiser();
-    }
+
+    function taskhide() {
+      if (windows.style.display == 'none') {
+        windows.style.display = "";
+        windowchoiser();
+        windowbutton.innerText = text;
+      }
+      else if ((windows.style.display == "") && (windowheader.style.backgroundColor == "var(--buttcolor)")) {
+        windows.style.display = 'none';
+        windowbutton.innerText = `[${text}]`;
+      }
+      else if ((windows.style.display == "") && (windowheader.style.backgroundColor == "var(--inactivewin)")) {
+        windowchoiser();
+      }
     };
-    hidebtn.onclick = () => {taskhide(); };
-    windowbutton.onclick = () => {taskhide(); };
-    closebtn.onclick = () => {windows.remove(); windowbutton.remove();};
+    hidebtn.onclick = () => { taskhide(); };
+    windowbutton.onclick = () => { taskhide(); };
+    closebtn.onclick = () => { windows.remove(); windowbutton.remove(); };
     contents.innerHTML = content;
     windows.id = "windowapp";
     windowheader.id = "windowappheader";
@@ -135,10 +135,11 @@ const windAPI = {
     windows.appendChild(windowheader);
     windows.appendChild(contents);
     frame.appendChild(windows);
+    windows.style.border = "1px solid var(--buttcolor)";
     windows.style.top = "50%";
     windows.style.left = "50%";
     windows.style.transform = "translate(-50%, -50%)";
-    let windowchoiser = () =>{
+    let windowchoiser = () => {
       frame.childNodes.forEach((element) => {
         element.style.zIndex = 6;
         element.querySelector("#windowappheader").style.backgroundColor = "#3d3d3d";
@@ -146,24 +147,45 @@ const windAPI = {
       windowheader.style.backgroundColor = "var(--buttcolor)";
       windows.style.zIndex = 400;
     }
+    let windowresizer = (sizeEvent) => {
+      let target = sizeEvent.target;
+
+      // Get the bounding rectangle of target
+      let rect = target.getBoundingClientRect();
+
+      // Mouse position
+      let x = sizeEvent.clientX - rect.left;
+      let y = sizeEvent.clientY - rect.top;
+
+      if (x < 10) {
+        windows.style.width = (windows.offsetWidth + sizeEvent.movementX) + "px";
+        windows.style.left = (windows.offsetLeft + sizeEvent.movementX) + "px";
 
 
-    windows.onmousedown = () => {
-      windowchoiser();
+      }
     }
-    windowheader.onmousedown = function() {
-      document.onmousemove = (moveEvent) => {
+
+
+
+      windowheader.onmousedown = () => {
+        document.onmousemove = (moveEvent) => {
         windows.style.left = (windows.offsetLeft + moveEvent.movementX) + "px";
         windows.style.top = (windows.offsetTop + moveEvent.movementY) + "px";
-       }
-    }
+        }
+      }
+      
+      windows.onmousedown = () => {
+         windowchoiser();
+      }
+    
+
     document.onmouseup = () => {
       document.onmousemove = null;
     }
     windowchoiser();
     return windows;
   }
-}; 
+};
 function addapp() {
 
   let testdirlol = fs.readdirSync("nasosapps");
@@ -178,7 +200,7 @@ function addapp() {
     console.log(targetFiles[whap]);
     console.log(app);
     let appcode = require(app.code);
-    if (appcode.init){
+    if (appcode.init) {
       appcode.init(windAPI);
     }
     whap++;

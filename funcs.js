@@ -165,7 +165,9 @@ const windAPI = {
       }
     }
 
-
+    windows.onmousedown = () => {
+      windowchoiser();
+   }
 
       windowheader.onmousedown = () => {
         document.onmousemove = (moveEvent) => {
@@ -174,9 +176,7 @@ const windAPI = {
         }
       }
       
-      windows.onmousedown = () => {
-         windowchoiser();
-      }
+
     
 
     document.onmouseup = () => {

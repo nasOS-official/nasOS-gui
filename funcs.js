@@ -135,7 +135,6 @@ const windAPI = {
     windows.appendChild(windowheader);
     windows.appendChild(contents);
     frame.appendChild(windows);
-    windows.style.border = "1px solid var(--buttcolor)";
     windows.style.top = "50%";
     windows.style.left = "50%";
     windows.style.transform = "translate(-50%, -50%)";

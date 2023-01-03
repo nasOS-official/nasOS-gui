@@ -92,6 +92,14 @@ const windAPI = {
     apps.appendChild(applink);
     applink.onclick = startapp;
   },
+  createShutdownButton: (startapp) => {
+    let applink = document.createElement("button");
+    applink.classList.add("power");
+    applink.innerHTML = `<img src="assets/shutdown.svg">`;
+    let panel = document.getElementById("taskbar");
+    panel.appendChild(applink);
+    applink.onclick = startapp;
+  },
   createWindow: (text, content) => {
     let contents = document.createElement("div");
     let windows = document.createElement("div");

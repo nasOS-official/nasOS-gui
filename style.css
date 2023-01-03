@@ -39,6 +39,8 @@ img {
   background-color: black;
   height: 40px;
   width: 40px;
+  position: absolute;
+  right: 0;
 }
 
 .power:hover {
@@ -160,11 +162,6 @@ input[type="color"] {
   width: 40px;
 }
 
-.power_btns {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-}
 
 .toggle__input:checked~.toggle__fill::after {
   transform: translateX(var(--height));
@@ -178,6 +175,7 @@ iframe {
 .tabcontent {
   background-color: var(--backcolor);
 }
+
 
 .time {
   color: #fff;

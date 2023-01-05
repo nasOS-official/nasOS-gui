@@ -72,7 +72,7 @@ function time() {
   let minutes = new Date().getMinutes().toString().padStart(2, "0");
   let seconds = new Date().getSeconds().toString().padStart(2, "0");
   let year = new Date().getFullYear()
-  let month = new Date().getMonth().toString().padStart(2, "0")
+  let month = (new Date().getMonth()+1).toString().padStart(2, "0");
   let day = new Date().getDate().toString().padStart(2, "0")
   timeclock.innerHTML = `${hour}:${minutes}:${seconds}`;
   dateclock.innerHTML = `${year}.${month}.${day}`

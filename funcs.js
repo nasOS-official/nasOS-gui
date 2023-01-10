@@ -56,16 +56,13 @@ window.addEventListener('keyup', function (e) {
 }
 */
 function shutdown() {
-  alert("Shutting down");
-  // child_process.spawn("", [``])
+ child_process.spawn("shutdown", [`now`])
 }
 function reboot() {
-  alert("Rebooting");
-  // child_process.spawn("", [``])
+   child_process.spawn("systemctl", ['reboot'])
 }
 function hibernation() {
-  alert("Hibernating");
-  // child_process.spawn("", [``])
+  child_process.spawn("systemctl", [`suspend`])
 }
 function time() {
   let hour = new Date().getHours().toString().padStart(2, "0");
